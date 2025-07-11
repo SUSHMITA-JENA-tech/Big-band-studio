@@ -2,146 +2,311 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>Big Band Studio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@600&family=Montserrat:wght@500;700&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
-    <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <meta charset="UTF-8" />
+  <title>Big Band Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@600&family=Montserrat:wght@500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      background: #000;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .overlay {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 60px;
+      z-index: 10;
+      background: transparent;
+      color: white;
+    }
+
+    .header-nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .header-nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .custom-logo {
+      font-size: 26px;
+      font-family: 'Cinzel', serif;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      color: gold;
+    }
+
+    .hero-text {
+      text-align: center;
+      margin-top: auto;
+      padding-bottom: 100px;
+    }
+
+    .hero-text h1 {
+      font-size: 3.5rem;
+      font-family: 'Cinzel', serif;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* FAQ section */
+    .faq-section {
+      background: #111;
+      color: #fff;
+      padding: 60px 40px;
+    }
+
+    .faq-title {
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    details {
+      background: #1d1d1d;
+      margin-bottom: 15px;
+      padding: 15px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    summary {
+      font-weight: 600;
+    }
+
+    .section-divider {
+      height: 40px;
+      background: #000;
+    }
+
+    /* Footer */
+    .footer {
+      background: #111;
+      color: white;
+      padding: 40px 20px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .footer-left,
+    .footer-middle,
+    .footer-right {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li a {
+      text-decoration: none;
+      color: white;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .footer-social {
+      margin-top: 15px;
+    }
+
+    .footer-social a {
+      color: white;
+      font-size: 1.3rem;
+      margin-right: 15px;
+    }
+
+    .footer-enquire {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 18px;
+      background: gold;
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+      }
+
+      .header-nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <!-- Slideshow Background -->
-    <div class="slideshow-background"></div>
+  <!-- Hero Section with Background Video -->
+  <section class="hero">
+    <video autoplay muted loop playsinline class="hero-video">
+      <source src="assets/videos/wedding.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
 
-    <!-- Hero Section with Background Video -->
-    <section class="hero">
-        <video autoplay muted loop playsinline class="hero-video">
-            <source src="assets/videos/hero.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-        </video>
-
-        <div class="overlay">
-            <!-- Transparent Header on Video -->
-            <header class="header">
-                <div class="header-left">
-
-                    <!-- Logo -->
-                    <div class="custom-logo">
-                        <span class="logo-script">Big</span>
-                        <i class="fas fa-camera logo-icon"></i>
-                        <span class="logo-script">Band</span>
-                    </div>
-                    
-                </div>
-
-                <!-- Nav Right Side -->
-                <nav class="header-nav">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="gallery/wedding.html">Photographs</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </nav>
-            </header>
-
-
-            <div class="hero-text">
-                <h1 style="font-family: 'Cinzel', serif; font-size: 3.5rem">
-                    Big Band Studio
-                </h1>
-                <p style="font-family: 'Montserrat', sans-serif">
-                    Capturing Emotions, One Frame at a Time
-                </p>
-            </div>
+    <div class="overlay">
+      <!-- Transparent Header -->
+      <header class="header">
+        <div class="custom-logo">
+          <span class="logo-script">Big</span>
+          <i class="fas fa-camera logo-icon"></i>
+          <span class="logo-script">Band</span>
         </div>
-    </section>
+        <nav class="header-nav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallery/wedding.html">Photographs</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
 
+      <div class="hero-text">
+        <h1>Big Band Studio</h1>
+        <p>Capturing Emotions, One Frame at a Time</p>
+      </div>
+    </div>
+  </section>
 
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <h2 class="faq-title">FAQs</h2>
+    <details>
+      <summary>What all do you do?</summary>
+      <p>📸 We cover weddings, pre-weddings, maternity, portraits, music videos, and more!</p>
+    </details>
+    <details>
+      <summary>How soon do we need to book you?</summary>
+      <p>🔔 As early as possible! Popular dates get booked 2–3 months in advance.</p>
+    </details>
+    <details>
+      <summary>How do you price yourself?</summary>
+      <p>💰 We customize packages based on shoot type, location, and hours.</p>
+    </details>
+    <details>
+      <summary>Where can I see more of your work?</summary>
+      <p>🔗 Check our Instagram, YouTube, and full gallery on the website.</p>
+    </details>
+  </section>
 
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <h2 class="faq-title">FAQs</h2>
-        <details>
-            <summary>What all do you do?</summary>
-            <p>📸 We cover weddings, pre-weddings, maternity, portraits, music videos, and more!</p>
-        </details>
-        <details>
-            <summary>How soon do we need to book you?</summary>
-            <p>🔔 As early as possible! Popular dates get booked 2–3 months in advance.</p>
-        </details>
-        <details>
-            <summary>How do you price yourself?</summary>
-            <p>💰 We customize packages based on shoot type, location, and hours.</p>
-        </details>
-        <details>
-            <summary>Where can I see more of your work?</summary>
-            <p>🔗 Check our Instagram, YouTube, and full gallery on the website.</p>
-        </details>
-    </section>
+  <div class="section-divider"></div>
 
-    <div class="section-divider"></div> <!-- Spacer / Separation -->
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <!-- Left Logo + Social Icons -->
-            <div class="footer-left">
-                <div class="custom-logo">
-                    <span class="logo-script">Big</span>
-                    <i class="fas fa-camera logo-icon"></i>
-                    <span class="logo-script">Band</span>
-                </div>
-                <div class="logo-tagline">PHOTOGRAPHY</div>
-
-                <div class="footer-social">
-                    <a href="https://instagram.com/_.bhootu._" target="_blank" class="social-icon insta">
-                        <!-- mr_photographer186_ -->
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://youtube.com/@adityashete186" target="_blank" class="social-icon youtube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="https://facebook.com/https:/1CU3pXN1Ls/" target="_blank" class="social-icon facebook">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Center Footer Navigation -->
-            <div class="footer-middle">
-                <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="gallery/wedding.html">Photography</a></li>
-                    <li><a href="#">Films</a></li>
-                    <li><a href="#">Blogs</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-
-            <!-- Right Footer Contact Info -->
-            <div class="footer-right">
-                <p class="footer-heading">GET IN TOUCH</p>
-                <p>
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:jsushmita07@gmail.com">adulya1997@gmail.com</a>
-                </p>
-                <p>
-                    <i class="fas fa-phone"></i> +91-8356815376
-                </p>
-                <a href="https://wa.me/918356815376" class="footer-enquire">Enquire Now</a>
-            </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="custom-logo">
+          <span class="logo-script">Big</span>
+          <i class="fas fa-camera logo-icon"></i>
+          <span class="logo-script">Band</span>
         </div>
-    </footer>
+        <div class="logo-tagline">PHOTOGRAPHY</div>
+
+        <div class="footer-social">
+          <a href="https://instagram.com/mr_photographer186_" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://youtube.com/@adityashete186" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="https://facebook.com/https:/1CU3pXN1Ls/" target="_blank"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-middle">
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery/wedding.html">Photography</a></li>
+          <li><a href="#">Films</a></li>
+          <li><a href="#">Blogs</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-right">
+        <p class="footer-heading">GET IN TOUCH</p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:adulya1997@gmail.com">adulya1997@gmail.com</a></p>
+        <p><i class="fas fa-phone"></i> +91-9594849807</p>
+        <a href="https://wa.me/919594849807" class="footer-enquire">Enquire Now</a>
+      </div>
+    </div>
+  </footer>
 </body>
 
 </html>
